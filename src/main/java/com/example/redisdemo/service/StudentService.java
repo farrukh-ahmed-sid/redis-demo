@@ -20,4 +20,12 @@ public class StudentService {
     public Map<Integer, Student> findAll(){
         return studentRepository.findAll();
     }
+
+    public void delete(Integer id){
+        studentRepository.delete(id);
+    }
+
+    public Student findStudentById(Integer id){
+        return studentRepository.findById(id);
+    }
 }
