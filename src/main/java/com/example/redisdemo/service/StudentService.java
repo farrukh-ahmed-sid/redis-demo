@@ -1,5 +1,7 @@
 package com.example.redisdemo.service;
 
+import com.example.redisdemo.dto.StudentDto;
+import com.example.redisdemo.mapper.StudentMapper;
 import com.example.redisdemo.model.Student;
 import com.example.redisdemo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private StudentMapper studentMapper;
+
     public void save(Student student){
         studentRepository.save(student);
     }
@@ -25,7 +30,8 @@ public class StudentService {
         studentRepository.delete(id);
     }
 
-    public Student findStudentById(Integer id){
-        return studentRepository.findById(id);
+    public StudentDto findStudentById(Integer id){
+        Student student = studentRepository.findById(id);
+        return studentMapper.map(student);
     }
 }

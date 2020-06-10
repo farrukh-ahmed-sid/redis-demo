@@ -1,5 +1,6 @@
 package com.example.redisdemo.controller;
 
+import com.example.redisdemo.dto.StudentDto;
 import com.example.redisdemo.model.Student;
 import com.example.redisdemo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class StudentController {
 
     @GetMapping("/student")
     @ResponseStatus(HttpStatus.OK)
-    public Student findStudentById(@RequestParam("id") Integer id){
+    public StudentDto findStudentById(@RequestParam("id") Integer id){
         return studentService.findStudentById(id);
     }
 }
